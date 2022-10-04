@@ -8,6 +8,7 @@ public class PlayerMovementController : MonoBehaviour
 {
     [Header("Base Speed Values")]
     public float maximumSpeed;
+    public float maximumSpeedRunning;
     public float gravityValue;
 
     [Header("Acceleration Curves")]
@@ -113,8 +114,12 @@ public class PlayerMovementController : MonoBehaviour
         float velocityZ = Vector3.Dot(movementVector, transform.forward);
         float velocityX = Vector3.Dot(movementVector, transform.right);      
         //Animation Move
-        _animatorPlayer.SetFloat("speed.z", velocityZ, 0.1f, Time.deltaTime); 
-        _animatorPlayer.SetFloat("speed.x", velocityX, 0.1f, Time.deltaTime);       
+        if(_animatorPlayer != null)
+        {
+            _animatorPlayer.SetFloat("speed.z", velocityZ, 0.1f, Time.deltaTime); 
+            _animatorPlayer.SetFloat("speed.x", velocityX, 0.1f, Time.deltaTime);  
+        }
+             
     }
 
     //@INPUT: Gather the stick coordinates
