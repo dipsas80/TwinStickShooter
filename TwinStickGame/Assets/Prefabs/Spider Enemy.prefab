@@ -1814,7 +1814,7 @@ GameObject:
   - component: {fileID: 1494302777598651114}
   - component: {fileID: 1494302777591154030}
   - component: {fileID: 1494302779255157910}
-  - component: {fileID: 1494302779255157909}
+  - component: {fileID: 1569866528678848772}
   m_Layer: 0
   m_Name: Spider Enemy
   m_TagString: Untagged
@@ -1837,7 +1837,7 @@ Transform:
   - {fileID: 1494302777598651070}
   - {fileID: 1494302777598651116}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -28.477, z: 0}
 --- !u!95 &1494302777591154030
 Animator:
@@ -1881,7 +1881,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1494302779255157909
+--- !u!114 &1569866528678848772
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1890,12 +1890,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1494302777598424842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a55802934774d464aa12279e10cb2fb5, type: 3}
+  m_Script: {fileID: 11500000, guid: 666f4b5375618044e8aa95c34a0e33ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  stoppingDistance: 2
-  minimunMovingDistance: 20
+  agent: {fileID: 1494302779255157910}
+  player: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 2147483647
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 8
+  enemyHealth: 100
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 0
+  dmg: 10
+  timeBetweenAttacks: 0.5
+  sightRange: 25
+  attackRange: 0.2
 --- !u!1 &1494302777598424844
 GameObject:
   m_ObjectHideFlags: 0
