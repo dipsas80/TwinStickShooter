@@ -13,6 +13,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] Vector3 walkPoint;
     bool walkPointSet;
     [SerializeField] float walkPointRange;
+    [SerializeField] float patrolPointTimer;
+    private float patrolTimer;
     [Header("Attack Settings")]
     [SerializeField] int dmg;
     [SerializeField] float timeBetweenAttacks;
@@ -53,6 +55,9 @@ public class EnemyAI : MonoBehaviour
 
     private void Patroling()
     {
+
+        patrolTimer += Time.deltaTime;
+
         if (!walkPointSet)
         {
             SearchWalkPoint();
@@ -67,9 +72,10 @@ public class EnemyAI : MonoBehaviour
 
         // Walk point Reached
 
-        if(distanceToWalkPoint.magnitude < 1f)
+        if(distanceToWalkPoint.magnitude < 1f || patrolTimer >= patrolPointTimer)
         {
             walkPointSet = false;
+            patrolTimer = 0f;
         }
 
     }

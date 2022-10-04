@@ -6,23 +6,26 @@ public class Bullet : MonoBehaviour
 {
     public int dmg;
 
-    private void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
         if(other.transform.tag == "Enemy")
         {
             other.transform.GetComponent<EnemyAI>().TakeDamage(dmg);
             Destroy(this.gameObject);
         }
-        else if(other.transform.tag != "Bullet")
+        
+    }
+    void OnCollisionEnter(Collision other)
+    {
+        if(other.transform.tag != "Bullet")
         {
             Destroy(this.gameObject);
         }
-        
     }
-    private void Awake()
+    public void DecayStart(float decayTime)
     {
-        //bullet despawns if no collision happened for 10s
-        Invoke("Decay", 10f);
+        //bullet despawns if no collision happened for x amount of time. This method is called when bullet spawns
+        Invoke("Decay", decayTime);
     }
 
     void Decay()

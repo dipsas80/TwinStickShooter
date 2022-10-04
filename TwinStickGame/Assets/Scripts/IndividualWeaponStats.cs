@@ -9,11 +9,12 @@ public class IndividualWeaponStats : MonoBehaviour
     [SerializeField] private int shots;
     [SerializeField] private float spreadValue;
     [SerializeField] private float timeInbetweenBullets;
+    [SerializeField] private float rangeInSeconds;
 
 
     public void getStats()
     {
         GameObject player = GameObject.Find("Player");
-        player.GetComponent<Weapon>().Shoot(name, dmg, shots, spreadValue, timeInbetweenBullets);
+        player.GetComponent<Weapon>().Shoot(name, dmg, shots, spreadValue, timeInbetweenBullets, rangeInSeconds);
     }
 }

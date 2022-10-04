@@ -931,6 +931,7 @@ MonoBehaviour:
   - {fileID: 7231285942643982771}
   - {fileID: 8302597557779829609}
   - {fileID: 1454250992979290128}
+  gunCycle: 0
   isShooting: 0
 --- !u!114 &5601897160896047081
 MonoBehaviour:
@@ -1234,10 +1235,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: mchinegun
-  dmg: 15
+  dmg: 20
   shots: 4
   spreadValue: 5
   timeInbetweenBullets: 0.08
+  rangeInSeconds: 8
 --- !u!4 &2343027635413369928 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1395369686, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}
@@ -1285,10 +1287,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: pistol
-  dmg: 10
+  dmg: 15
   shots: 1
   spreadValue: 0
   timeInbetweenBullets: 0.1
+  rangeInSeconds: 4
 --- !u!1 &8302597557779829609 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6033938691257889271, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}
@@ -1311,6 +1314,7 @@ MonoBehaviour:
   shots: 8
   spreadValue: 45
   timeInbetweenBullets: 0
+  rangeInSeconds: 0.2
 --- !u!4 &8675912577050742687 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6404984800639413505, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}

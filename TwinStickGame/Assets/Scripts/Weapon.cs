@@ -13,7 +13,7 @@ public class Weapon : MonoBehaviour
 
     //Different Guns
     public GameObject[] gunModels;
-    private int gunCycle = 0;
+    public int gunCycle = 0;
     public bool isShooting;
 
 
@@ -28,20 +28,23 @@ public class Weapon : MonoBehaviour
     {
         if(NextWeapon.isPressed)
         {
-            gunModels[gunCycle].SetActive(false);
+            for(int i = 0; i < gunModels.Length; i++)
+            {
+                gunModels[i].SetActive(false);
+            }
             gunCycle = ((gunCycle + 1) % gunModels.Length);
             gunModels[gunCycle].SetActive(true);
         }
     }
 
-    public void Shoot(string name, int damage, int shotAmount, float bulletSpread, float timeInbetweenBullets)
+    public void Shoot(string name, int damage, int shotAmount, float bulletSpread, float timeInbetweenBullets, float range)
     {
         Debug.Log(name + " was fired");
-        StartCoroutine(Fire(shotAmount, timeInbetweenBullets, bulletSpread, damage));        
+        StartCoroutine(Fire(shotAmount, timeInbetweenBullets, bulletSpread, damage, range));        
 
     }
     
-    IEnumerator Fire(int shots, float time, float bulletSpread, int damage)
+    IEnumerator Fire(int shots, float time, float bulletSpread, int damage, float decayRange)
     {
         isShooting = true;
         for(int i = 0; i < shots; i++)
@@ -51,6 +54,7 @@ public class Weapon : MonoBehaviour
             var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
             bullet.GetComponent<Rigidbody>().velocity = spreadAngle * bulletSpawnPoint.forward * bulletSpeed;
             bullet.GetComponent<Bullet>().dmg = damage;
+            bullet.GetComponent<Bullet>().DecayStart(decayRange);
             yield return new WaitForSeconds(time);
         }
         isShooting = false;
