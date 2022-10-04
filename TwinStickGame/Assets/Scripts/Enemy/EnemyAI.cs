@@ -14,12 +14,14 @@ public class EnemyAI : MonoBehaviour
     bool walkPointSet;
     [SerializeField] float walkPointRange;
     [Header("Attack Settings")]
+    [SerializeField] int dmg;
     [SerializeField] float timeBetweenAttacks;
     bool alreadyAttacked;
     [Header("States")]
     [SerializeField] float sightRange, attackRange;
     bool isPlayerInSightRange;
     bool isPlayerInAttackRange;
+
 
  
     void Awake()
@@ -98,6 +100,7 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
+            player.GetComponent<PlayerHealth>().TakeDamage(dmg);
             /////Attack code here!!!!
 
             alreadyAttacked = true;
