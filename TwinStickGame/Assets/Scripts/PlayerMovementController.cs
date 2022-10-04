@@ -8,6 +8,7 @@ public class PlayerMovementController : MonoBehaviour
 {
     [Header("Base Speed Values")]
     public float maximumSpeed;
+    public float maximumSpeedRunning;
     public float gravityValue;
 
     [Header("Acceleration Curves")]
