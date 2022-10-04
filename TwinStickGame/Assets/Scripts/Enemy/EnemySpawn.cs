@@ -6,9 +6,15 @@ public class EnemySpawn : MonoBehaviour
 {
     [SerializeField] GameObject enemy;
     [Header("Spawnin Position")]
-    [SerializeField] float xPos;
+    float xPos;
     [SerializeField] float yPos;
-    [SerializeField] float zPos;
+    float zPos;
+    [SerializeField] float minXPos;
+    [SerializeField] float maxXPos;
+    [SerializeField] float minZPos;
+    [SerializeField] float maxZPos;
+
+    
     [Header("Enemy Amout")]
     [SerializeField] int enemyAmount;
 
@@ -24,8 +30,8 @@ public class EnemySpawn : MonoBehaviour
     {
         while (enemyAmount < 10)
         {
-            xPos = Random.Range(57, 95);
-            zPos = Random.Range(21, 60);
+            xPos = Random.Range(minXPos, maxXPos);
+            zPos = Random.Range(minZPos, maxZPos);
             Instantiate(enemy, new Vector3(xPos, yPos, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
 
