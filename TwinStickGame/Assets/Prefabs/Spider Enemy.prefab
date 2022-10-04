@@ -1829,7 +1829,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494302777598424842}
-  m_LocalRotation: {x: -0, y: -0.2459603, z: -0, w: 0.96927994}
+  m_LocalRotation: {x: 0, y: -0.24595867, z: 0, w: 0.96928036}
   m_LocalPosition: {x: 49.868362, y: 3.829996, z: -9.14011}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
@@ -1837,7 +1837,7 @@ Transform:
   - {fileID: 1494302777598651070}
   - {fileID: 1494302777598651116}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -28.477, z: 0}
 --- !u!95 &1494302777591154030
 Animator:
@@ -1903,10 +1903,10 @@ MonoBehaviour:
     m_Bits: 8
   enemyHealth: 100
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 0
+  walkPointRange: 10
   dmg: 10
   timeBetweenAttacks: 0.5
-  sightRange: 25
+  sightRange: 30
   attackRange: 0.2
 --- !u!1 &1494302777598424844
 GameObject:
