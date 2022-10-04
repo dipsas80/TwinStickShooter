@@ -31,7 +31,6 @@ public class WeaponSwitcher : MonoBehaviour
         
         if (NextWeapon.triggered)
         {
-            Debug.Log("current weapon is " + selectedWeapon);
             if (selectedWeapon >= transform.childCount - 1)
             {
                 selectedWeapon = 0;
