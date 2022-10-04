@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform player;
     [SerializeField] LayerMask whatIsGround, whatIsPlayer;
-    [SerializeField] float enemyHealth;
+    public float enemyHealth;
     [Header("Patrol State")]
     [SerializeField] Vector3 walkPoint;
     bool walkPointSet;
@@ -119,7 +119,7 @@ public class EnemyAI : MonoBehaviour
 
         if (enemyHealth <= 0)
         {
-            Invoke(nameof(DestroyEnemy), 2f);
+            Invoke(nameof(DestroyEnemy), 0.5f);
         }
     }
 
