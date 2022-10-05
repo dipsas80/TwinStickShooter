@@ -651,7 +651,9 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 2343027635413369928}
   bulletPrefab: {fileID: 7588781329871585409, guid: d8911c8288f7b994d8747862dd78a8d4, type: 3}
   bulletSpeed: 30
-  fireRate: 0.1
+  gunModels: []
+  gunCycle: 0
+  isShooting: 0
 --- !u!114 &5601897160896047081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -973,7 +975,8 @@ PrefabInstance:
       propertyPath: movementController
       value: 
       objectReference: {fileID: 8578343171189146193}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1853966965, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6357911500599777355, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}
       insertIndex: -1
