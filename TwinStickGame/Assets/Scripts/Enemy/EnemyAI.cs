@@ -34,6 +34,17 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        //animations
+        if(agent.velocity == Vector3.zero)
+        {
+            this.GetComponent<Animator>().SetBool("isWalking", false);
+        }
+        else
+        {
+            this.GetComponent<Animator>().SetBool("isWalking", true);
+        }
+
+
         //Check for sight and attack range
         isPlayerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         isPlayerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
