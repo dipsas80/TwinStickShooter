@@ -938,7 +938,7 @@ MonoBehaviour:
   - {fileID: 1454250992979290128}
   gunCycle: 0
   isShooting: 0
-  unlockedGunsTotal: 1
+  gunsUnlocked: 000000
 --- !u!114 &5601897160896047081
 MonoBehaviour:
   m_ObjectHideFlags: 0
