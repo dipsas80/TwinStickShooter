@@ -10,7 +10,7 @@ public class AI_BulletController : MonoBehaviour
     
     [SerializeField] private float timeToDestroy = 0.3f;
     
-    [SerializeField] private int weaponDamage = 20;
+    [SerializeField] public int weaponDamage = 20;
 
 
     // Update is called once per frame

@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -8,11 +10,17 @@ public class PlayerHealth : MonoBehaviour
 
     public int currentHealth;
     public int maxHealth;
+    [SerializeField] LevelManager levelManager;
     [SerializeField] private Slider hpBar;
     public Animator animator;
+    private PlayerInput playerInput;
+
+    private void Start()
+    {
+        playerInput = gameObject.GetComponent<PlayerInput>();
+    }
 
 
-    
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -21,7 +29,10 @@ public class PlayerHealth : MonoBehaviour
         {
             Debug.Log("dead");
 
-            animator.SetTrigger("death");
+            playerInput.enabled = false;
+            animator.SetBool("IsDead", true);
+            Invoke("LoadGameoverScreen", 20f);
+            
         }
         else
         {
@@ -29,6 +40,7 @@ public class PlayerHealth : MonoBehaviour
           animator.SetTrigger("reaction");
         }   
     }
+
         
     public void Heal(int health)
     {
@@ -51,4 +63,11 @@ public class PlayerHealth : MonoBehaviour
             return currentHealth <= 0;
         }
     }
+
+    public void LoadGameoverScreen()
+    {
+        levelManager.YouDied();
+        Debug.Log("loading dead screen");
+    }
+    
 }
