@@ -16,6 +16,7 @@ public class Weapon : MonoBehaviour
     public int gunCycle = 0;
     public bool isShooting;
 
+    public bool[] gunsUnlocked;
 
     private void OnFire(InputValue Fire)
     {
@@ -26,14 +27,32 @@ public class Weapon : MonoBehaviour
     }
     private void OnNextWeapon(InputValue NextWeapon)
     {
+        
+
         if(NextWeapon.isPressed)
         {
-            for(int i = 0; i < gunModels.Length; i++)
+            
+            if(gunsUnlocked[((gunCycle + 1) % gunModels.Length)] == true)
             {
-                gunModels[i].SetActive(false);
+                for(int i = 0; i < gunModels.Length; i++)
+                {
+                    gunModels[i].SetActive(false);
+                }
+                gunCycle = ((gunCycle + 1) % gunModels.Length);
+                gunModels[gunCycle].SetActive(true);
+                
             }
-            gunCycle = ((gunCycle + 1) % gunModels.Length);
-            gunModels[gunCycle].SetActive(true);
+            else if(gunsUnlocked[(((gunCycle + 1) % gunModels.Length)) + 1] == true)
+            {
+                for(int i = 0; i < gunModels.Length; i++)
+                {
+                    gunModels[i].SetActive(false);
+                }
+                gunCycle = (((gunCycle + 1) % gunModels.Length) + 1);
+                gunModels[gunCycle].SetActive(true);
+                
+            }
+            
         }
     }
 
@@ -50,7 +69,7 @@ public class Weapon : MonoBehaviour
         for(int i = 0; i < shots; i++)
         {
             Quaternion spreadAngle = Quaternion.identity;
-            spreadAngle.eulerAngles = new Vector3(Random.Range(-bulletSpread, bulletSpread), Random.Range(-bulletSpread, bulletSpread), 0);
+            spreadAngle.eulerAngles = new Vector3(0, Random.Range(-bulletSpread, bulletSpread), 0);
             var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
             bullet.GetComponent<Rigidbody>().velocity = spreadAngle * bulletSpawnPoint.forward * bulletSpeed;
             bullet.GetComponent<Bullet>().dmg = damage;
