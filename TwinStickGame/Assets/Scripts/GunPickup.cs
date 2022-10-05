@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GunPickup : MonoBehaviour
 {
-    [Header("2 = shotgun")]
-    [Header("3 = machinegun & shotgun")]
+    [Header("1 = shotgun")]
+    [Header("2 = machinegun")]
     public int gunValue;
     public GameObject mesh;
     private bool used;
@@ -16,13 +16,9 @@ public class GunPickup : MonoBehaviour
         if(other.transform.tag == "Player" && used == false)
         {
             
-            if(other.GetComponent<Weapon>().unlockedGunsTotal <= gunValue)
-            {
-                other.GetComponent<Weapon>().unlockedGunsTotal = gunValue;
-                this.GetComponent<AudioSource>().Play();
-                
-            }
             
+            other.GetComponent<Weapon>().gunsUnlocked[gunValue] = true;
+            this.GetComponent<AudioSource>().Play();
             Invoke("DestroyAfterSound", 1f);
             mesh.SetActive(false);
             used = true;
