@@ -8,11 +8,13 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform player;
     [SerializeField] LayerMask whatIsGround, whatIsPlayer;
-    [SerializeField] float enemyHealth;
+    public float enemyHealth;
     [Header("Patrol State")]
     [SerializeField] Vector3 walkPoint;
     bool walkPointSet;
     [SerializeField] float walkPointRange;
+    [SerializeField] float patrolPointTimer;
+    private float patrolTimer;
     [Header("Attack Settings")]
     [SerializeField] int dmg;
     [SerializeField] float timeBetweenAttacks;
@@ -53,6 +55,9 @@ public class EnemyAI : MonoBehaviour
 
     private void Patroling()
     {
+
+        patrolTimer += Time.deltaTime;
+
         if (!walkPointSet)
         {
             SearchWalkPoint();
@@ -67,9 +72,10 @@ public class EnemyAI : MonoBehaviour
 
         // Walk point Reached
 
-        if(distanceToWalkPoint.magnitude < 1f)
+        if(distanceToWalkPoint.magnitude < 1f || patrolTimer >= patrolPointTimer)
         {
             walkPointSet = false;
+            patrolTimer = 0f;
         }
 
     }
@@ -119,7 +125,7 @@ public class EnemyAI : MonoBehaviour
 
         if (enemyHealth <= 0)
         {
-            Invoke(nameof(DestroyEnemy), 2f);
+            Invoke(nameof(DestroyEnemy), 0.5f);
         }
     }
 
