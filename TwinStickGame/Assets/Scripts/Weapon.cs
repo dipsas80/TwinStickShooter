@@ -16,6 +16,7 @@ public class Weapon : MonoBehaviour
     public int gunCycle = 0;
     public bool isShooting;
 
+    public int unlockedGunsTotal = 0;
 
     private void OnFire(InputValue Fire)
     {
@@ -28,11 +29,11 @@ public class Weapon : MonoBehaviour
     {
         if(NextWeapon.isPressed)
         {
-            for(int i = 0; i < gunModels.Length; i++)
+            for(int i = 0; i < unlockedGunsTotal; i++)
             {
                 gunModels[i].SetActive(false);
             }
-            gunCycle = ((gunCycle + 1) % gunModels.Length);
+            gunCycle = ((gunCycle + 1) % unlockedGunsTotal);
             gunModels[gunCycle].SetActive(true);
         }
     }
@@ -50,7 +51,7 @@ public class Weapon : MonoBehaviour
         for(int i = 0; i < shots; i++)
         {
             Quaternion spreadAngle = Quaternion.identity;
-            spreadAngle.eulerAngles = new Vector3(Random.Range(-bulletSpread, bulletSpread), Random.Range(-bulletSpread, bulletSpread), 0);
+            spreadAngle.eulerAngles = new Vector3(0, Random.Range(-bulletSpread, bulletSpread), 0);
             var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
             bullet.GetComponent<Rigidbody>().velocity = spreadAngle * bulletSpawnPoint.forward * bulletSpeed;
             bullet.GetComponent<Bullet>().dmg = damage;
