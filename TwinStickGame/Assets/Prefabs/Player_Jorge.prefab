@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 5601897160896047081}
   - component: {fileID: 8578343171409521656}
   m_Layer: 3
-  m_Name: Player
+  m_Name: Player_Jorge
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -448,7 +448,7 @@ Transform:
   - {fileID: 8675912577050742687}
   - {fileID: 1854270672971997668}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &8578343171189146222
 CharacterController:
