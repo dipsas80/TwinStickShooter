@@ -14,6 +14,7 @@ public class IndividualWeaponStats : MonoBehaviour
 
     public void getStats()
     {
+        this.GetComponent<AudioSource>().Play();
         GameObject player = GameObject.Find("Player");
         player.GetComponent<Weapon>().Shoot(name, dmg, shots, spreadValue, timeInbetweenBullets, rangeInSeconds);
     }
