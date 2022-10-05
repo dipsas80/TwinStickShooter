@@ -24,14 +24,17 @@ public class PlayerMovementController : MonoBehaviour
     private CharacterController controller;
     private Transform playerBody;
 
-    private Vector3 movementVector;
+    public Vector3 movementVector;
     private Vector3 lastMaxMovementVector;
 
-    private Vector2 leftStickPosition;
-    private Vector2 rightStickPosition;
+    public Vector2 leftStickPosition;
+    public Vector2 rightStickPosition;
     
     [Header("Animation")]
     public Animator _animatorPlayer;
+
+    public float velocityZ;
+    public float velocityX;
 
 
     [HideInInspector]
@@ -111,8 +114,8 @@ public class PlayerMovementController : MonoBehaviour
         
         
         //Animation speed
-        float velocityZ = Vector3.Dot(movementVector, transform.forward);
-        float velocityX = Vector3.Dot(movementVector, transform.right);      
+        velocityZ = Vector3.Dot(movementVector, transform.forward);
+        velocityX = Vector3.Dot(movementVector, transform.right);      
         //Animation Move
         if(_animatorPlayer != null)
         {
