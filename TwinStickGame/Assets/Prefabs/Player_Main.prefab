@@ -354,7 +354,7 @@ Transform:
   - {fileID: 8675912577050742687}
   - {fileID: 1854270672971997668}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &8578343171189146222
 CharacterController:
@@ -581,6 +581,16 @@ MonoBehaviour:
   levelManager: {fileID: 0}
   hpBar: {fileID: 124366431291540062}
   animator: {fileID: 3352688378381981157}
+  damageSound:
+  - {fileID: 8300000, guid: 9ff9d050314524ff0be0aebc15ac6fbc, type: 3}
+  - {fileID: 8300000, guid: 9ff9d050314524ff0be0aebc15ac6fbc, type: 3}
+  - {fileID: 8300000, guid: 9ff9d050314524ff0be0aebc15ac6fbc, type: 3}
+  randomList: []
+  death01: {fileID: 8300000, guid: 5ee6a3229b728724da24f8fadf34a6c6, type: 3}
+  death02: {fileID: 8300000, guid: 341b661097905e142b760af99bfcd593, type: 3}
+  mixerOutput: {fileID: 24300002, guid: 8666b9ce792851745a04019951b425ba, type: 2}
+  pitchMin: 0.8
+  pitchMax: 1.2
 --- !u!82 &3847732776327631752
 AudioSource:
   m_ObjectHideFlags: 0
@@ -801,7 +811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1690411036, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.66
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1690411036, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -810,6 +820,30 @@ PrefabInstance:
     - target: {fileID: 1690411036, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690411036, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9982809
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690411036, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.042065356
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690411036, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.028366713
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690411036, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.02934728
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690411036, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -3.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795006897444965006, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3911753480334598288, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}
       propertyPath: movementController
@@ -822,6 +856,10 @@ PrefabInstance:
     - target: {fileID: 6028282579609925563, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}
       propertyPath: m_Name
       value: AnimatedCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 6033938691257889271, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6404984800639413505, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}
       propertyPath: m_RootOrder

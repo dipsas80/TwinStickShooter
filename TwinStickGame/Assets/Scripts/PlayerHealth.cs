@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -15,34 +17,77 @@ public class PlayerHealth : MonoBehaviour
     public Animator animator;
     private PlayerMovementController playerMovement;
     private PlayerInput playerInput;
+    [SerializeField] private AudioClip[] damageSound;
+    [SerializeField] private List<AudioClip> randomList;
+
+    [SerializeField] private AudioClip death01;
+    [SerializeField] private AudioClip death02;
+    AudioSource source;
+    [SerializeField] AudioMixerGroup mixerOutput;
+    [SerializeField] float pitchMin = 0.90f, pitchMax = 1.1f;
+
+
+    private bool isDeathPlayed;
 
     private void Start()
     {
+        source = gameObject.AddComponent<AudioSource>();
+        source.outputAudioMixerGroup = mixerOutput;
+        isDeathPlayed = false;
+        
+        randomList = new List<AudioClip>(new AudioClip[damageSound.Length]);
+        
+        for (int i = 0; i < damageSound.Length; i++)
+        {
+            randomList[i] = damageSound[i];
+        }
+
         playerInput = gameObject.GetComponent<PlayerInput>();
-        // playerInput = gameObject.GetComponent<PlayerMovementController>();
     }
 
 
     public void TakeDamage(int damage)
     {
+
         currentHealth -= damage;
 
         if (IsDead)
         {
-            Debug.Log("dead");
-
-            playerInput.enabled = false;
             animator.SetBool("IsDead", true);
+            DeathFeedback();
+            playerInput.enabled = false;
             Invoke("LoadGameoverScreen", 4f);
-            
+           
         }
         else
         {
-            Debug.Log("taking damage");
             animator.SetTrigger("reaction");
+
+            int i = Random.Range(0, randomList.Count);
+     
+            source.pitch = Random.Range(pitchMin, pitchMax);
+            source.PlayOneShot(randomList[i], volumeScale:0.2f);
         }   
     }
 
+    private void DeathFeedback()
+    {
+        if (isDeathPlayed == false)
+        {
+            source.PlayOneShot(death01, volumeScale:0.75f);
+            source.PlayOneShot(death02, volumeScale:0.2f);
+            isDeathPlayed = true;
+        }
+    
+    }
+    
+    public void Reset()
+    {
+        for (int i = 0; i < damageSound.Length; i++)
+        {
+            randomList.Add(damageSound[i]);
+        }
+    }
         
     public void Heal(int health)
     {
