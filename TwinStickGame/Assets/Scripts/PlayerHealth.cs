@@ -13,11 +13,13 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] LevelManager levelManager;
     [SerializeField] private Slider hpBar;
     public Animator animator;
-    private PlayerMovementController playerInput;
+    private PlayerMovementController playerMovement;
+    private PlayerInput playerInput;
 
     private void Start()
     {
-        playerInput = gameObject.GetComponent<PlayerMovementController>();
+        playerInput = gameObject.GetComponent<PlayerInput>();
+        // playerInput = gameObject.GetComponent<PlayerMovementController>();
     }
 
 
