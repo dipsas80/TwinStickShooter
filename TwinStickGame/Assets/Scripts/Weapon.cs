@@ -42,13 +42,13 @@ public class Weapon : MonoBehaviour
                 gunModels[gunCycle].SetActive(true);
                 
             }
-            else if(gunsUnlocked[(((gunCycle + 1) % gunModels.Length)) + 1] == true)
+            else if(gunsUnlocked[(((gunCycle + 2) % gunModels.Length))] == true)
             {
                 for(int i = 0; i < gunModels.Length; i++)
                 {
                     gunModels[i].SetActive(false);
                 }
-                gunCycle = (((gunCycle + 1) % gunModels.Length) + 1);
+                gunCycle = (((gunCycle + 2) % gunModels.Length));
                 gunModels[gunCycle].SetActive(true);
                 
             }
