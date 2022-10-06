@@ -17,7 +17,7 @@ public class FinalArea : MonoBehaviour
         {
             timer += Time.deltaTime;
             timerUI.gameObject.SetActive(true);
-            timerUI.text = "Survuve for " + (60 - Mathf.RoundToInt(timer)) + " seconds";
+            timerUI.text = "Survive for " + (60 - Mathf.RoundToInt(timer)) + " seconds";
             this.GetComponent<BoxCollider>().enabled = false;
         }
 
