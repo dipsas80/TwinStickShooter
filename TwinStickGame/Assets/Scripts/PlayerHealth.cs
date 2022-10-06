@@ -7,8 +7,11 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
+
 public class PlayerHealth : MonoBehaviour
 {
+
+    
 
     public int currentHealth;
     public int maxHealth;
@@ -16,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Slider hpBar;
     public Animator animator;
     private PlayerMovementController playerMovement;
-    private PlayerInput playerInput;
+    public PlayerInput playerInput;
     [SerializeField] private AudioClip[] damageSound;
     [SerializeField] private List<AudioClip> randomList;
 
@@ -42,20 +45,23 @@ public class PlayerHealth : MonoBehaviour
             randomList[i] = damageSound[i];
         }
 
-        playerInput = gameObject.GetComponent<PlayerInput>();
+        //playerInput = this.GetComponent<PlayerInput>();
     }
 
 
     public void TakeDamage(int damage)
     {
+        Gamepad.current.SetMotorSpeeds(1f, 1f);
+        Invoke("StopRumble", 0.1f);
 
         currentHealth -= damage;
 
         if (IsDead)
         {
+            Invoke("StopRumble", 0f);
             animator.SetBool("IsDead", true);
             DeathFeedback();
-            playerInput.enabled = false;
+            playerInput.actions = null;
             Invoke("LoadGameoverScreen", 4f);
            
         }
@@ -116,5 +122,10 @@ public class PlayerHealth : MonoBehaviour
         levelManager.YouDied();
         Debug.Log("loading dead screen");
     }
+    void StopRumble()
+    {
+        Gamepad.current.SetMotorSpeeds(0f, 0f);
+    }
+    
     
 }

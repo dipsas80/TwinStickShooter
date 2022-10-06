@@ -56,14 +56,14 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public void Shoot(string name, int damage, int shotAmount, float bulletSpread, float timeInbetweenBullets, float range)
+    public void Shoot(string name, int damage, int shotAmount, float bulletSpread, float timeInbetweenBullets, float range, float cooldown)
     {
         Debug.Log(name + " was fired");
-        StartCoroutine(Fire(shotAmount, timeInbetweenBullets, bulletSpread, damage, range));        
+        StartCoroutine(Fire(shotAmount, timeInbetweenBullets, bulletSpread, damage, range, cooldown));        
 
     }
     
-    IEnumerator Fire(int shots, float time, float bulletSpread, int damage, float decayRange)
+    IEnumerator Fire(int shots, float time, float bulletSpread, int damage, float decayRange, float cooldownafter)
     {
         isShooting = true;
         for(int i = 0; i < shots; i++)
@@ -76,6 +76,7 @@ public class Weapon : MonoBehaviour
             bullet.GetComponent<Bullet>().DecayStart(decayRange);
             yield return new WaitForSeconds(time);
         }
+        yield return new WaitForSeconds(cooldownafter);
         isShooting = false;
     }
 }
