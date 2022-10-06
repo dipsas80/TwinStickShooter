@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
         {
             if (Input.anyKey)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
             }
         }
     }
@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour
     public void YouDied()
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex; 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
     }
     
     
@@ -47,6 +47,6 @@ public class LevelManager : MonoBehaviour
     }
     public void Restart()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 }

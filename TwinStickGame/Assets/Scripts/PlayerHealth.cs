@@ -13,11 +13,11 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] LevelManager levelManager;
     [SerializeField] private Slider hpBar;
     public Animator animator;
-    private PlayerInput playerInput;
+    private PlayerMovementController playerInput;
 
     private void Start()
     {
-        playerInput = gameObject.GetComponent<PlayerInput>();
+        playerInput = gameObject.GetComponent<PlayerMovementController>();
     }
 
 
@@ -31,13 +31,13 @@ public class PlayerHealth : MonoBehaviour
 
             playerInput.enabled = false;
             animator.SetBool("IsDead", true);
-            Invoke("LoadGameoverScreen", 20f);
+            Invoke("LoadGameoverScreen", 4f);
             
         }
         else
         {
             Debug.Log("taking damage");
-          animator.SetTrigger("reaction");
+            animator.SetTrigger("reaction");
         }   
     }
 

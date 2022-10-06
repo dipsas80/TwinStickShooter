@@ -354,7 +354,7 @@ Transform:
   - {fileID: 8675912577050742687}
   - {fileID: 1854270672971997668}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &8578343171189146222
 CharacterController:
@@ -563,6 +563,7 @@ MonoBehaviour:
   - {fileID: 1454250992979290128}
   gunCycle: 0
   isShooting: 0
+  gunsUnlocked: 010000
 --- !u!114 &5601897160896047081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -577,6 +578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 100
   maxHealth: 100
+  levelManager: {fileID: 0}
   hpBar: {fileID: 124366431291540062}
   animator: {fileID: 3352688378381981157}
 --- !u!82 &3847732776327631752
@@ -813,6 +815,10 @@ PrefabInstance:
       propertyPath: movementController
       value: 
       objectReference: {fileID: 8578343171189146193}
+    - target: {fileID: 4962592372770038573, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6028282579609925563, guid: 7e90272159230814b853e2a06a1cd64a, type: 3}
       propertyPath: m_Name
       value: AnimatedCharacter
